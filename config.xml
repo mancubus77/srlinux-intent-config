@@ -1,0 +1,122 @@
+<config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <system xmlns="urn:nokia.com:srlinux:general:system">
+    <name xmlns="urn:nokia.com:srlinux:chassis:system-name">
+      <host-name>leaf-03</host-name>
+      <domain-name>fttx-demo.lab</domain-name>
+    </name>
+    <dns xmlns="urn:nokia.com:srlinux:linux:dns">
+      <network-instance>mgmt</network-instance>
+      <server-list>172.30.0.10</server-list>
+      <host-entry>
+        <name>leaf-01</name>
+        <ipv4-address>172.25.113.31</ipv4-address>
+      </host-entry>
+      <host-entry>
+        <name>leaf-02</name>
+        <ipv4-address>172.25.113.30</ipv4-address>
+      </host-entry>
+    </dns>
+    <lldp xmlns="urn:nokia.com:srlinux:lldp:lldp">
+      <admin-state>enable</admin-state>
+    </lldp>
+    <netconf-server xmlns="urn:nokia.com:srlinux:netconf:netconf-server">
+      <name>mgmt</name>
+      <admin-state>enable</admin-state>
+      <ssh-server>mgmt</ssh-server>
+    </netconf-server>
+    <grpc-server xmlns="urn:nokia.com:srlinux:grpc:grpc">
+      <name>mgmt</name>
+      <admin-state>enable</admin-state>
+      <default-tls-profile>true</default-tls-profile>
+      <network-instance>mgmt</network-instance>
+      <services>gnmi</services>
+      <services>gnsi</services>
+    </grpc-server>
+  </system>
+  <interface xmlns="urn:nokia.com:srlinux:chassis:interfaces">
+    <name>ethernet-1/1</name>
+    <admin-state>enable</admin-state>
+    <description>to-leaf-01</description>
+    <subinterface>
+      <index>0</index>
+      <admin-state>enable</admin-state>
+      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+        <admin-state>enable</admin-state>
+        <address>
+          <ip-prefix>192.168.1.1/30</ip-prefix>
+        </address>
+      </ipv4>
+    </subinterface>
+  </interface>
+  <interface xmlns="urn:nokia.com:srlinux:chassis:interfaces">
+    <name>ethernet-1/2</name>
+    <admin-state>enable</admin-state>
+    <description>to-leaf-02</description>
+    <subinterface>
+      <index>0</index>
+      <admin-state>enable</admin-state>
+      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+        <admin-state>enable</admin-state>
+        <address>
+          <ip-prefix>192.168.1.5/30</ip-prefix>
+        </address>
+      </ipv4>
+    </subinterface>
+  </interface>
+  <interface xmlns="urn:nokia.com:srlinux:chassis:interfaces">
+    <name>lo0</name>
+    <admin-state>enable</admin-state>
+    <description>system-loopback</description>
+    <subinterface>
+      <index>0</index>
+      <admin-state>enable</admin-state>
+      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+        <admin-state>enable</admin-state>
+        <address>
+          <ip-prefix>10.0.0.3/32</ip-prefix>
+        </address>
+      </ipv4>
+    </subinterface>
+  </interface>
+  <network-instance xmlns="urn:nokia.com:srlinux:net-inst:network-instance">
+    <name>default</name>
+    <admin-state>enable</admin-state>
+    <interface>
+      <name>ethernet-1/1.0</name>
+    </interface>
+    <interface>
+      <name>ethernet-1/2.0</name>
+    </interface>
+    <interface>
+      <name>lo0.0</name>
+    </interface>
+    <protocols>
+      <ospf xmlns="urn:nokia.com:srlinux:ospf:ospf">
+        <instance>
+          <name>main</name>
+          <admin-state>enable</admin-state>
+          <version>ospf-v2</version>
+          <router-id>10.0.0.3</router-id>
+          <area>
+            <area-id>0.0.0.0</area-id>
+            <interface>
+              <interface-name>ethernet-1/1.0</interface-name>
+              <admin-state>enable</admin-state>
+              <interface-type>point-to-point</interface-type>
+            </interface>
+            <interface>
+              <interface-name>ethernet-1/2.0</interface-name>
+              <admin-state>enable</admin-state>
+              <interface-type>point-to-point</interface-type>
+            </interface>
+            <interface>
+              <interface-name>lo0.0</interface-name>
+              <admin-state>enable</admin-state>
+              <passive>true</passive>
+            </interface>
+          </area>
+        </instance>
+      </ospf>
+    </protocols>
+  </network-instance>
+</config>
