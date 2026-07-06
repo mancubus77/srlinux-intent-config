@@ -9,11 +9,11 @@
       <server-list>172.30.0.10</server-list>
       <host-entry>
         <name>leaf-01</name>
-        <ipv4-address>172.25.113.31</ipv4-address>
+        <ipv4-address>172.25.113.30</ipv4-address>
       </host-entry>
       <host-entry>
         <name>leaf-02</name>
-        <ipv4-address>172.25.113.30</ipv4-address>
+        <ipv4-address>172.25.113.31</ipv4-address>
       </host-entry>
     </dns>
     <lldp xmlns="urn:nokia.com:srlinux:lldp:lldp">
