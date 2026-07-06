@@ -40,7 +40,7 @@
     <subinterface>
       <index>0</index>
       <admin-state>enable</admin-state>
-      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+      <ipv4>
         <admin-state>enable</admin-state>
         <address>
           <ip-prefix>192.168.1.1/30</ip-prefix>
@@ -55,7 +55,7 @@
     <subinterface>
       <index>0</index>
       <admin-state>enable</admin-state>
-      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+      <ipv4>
         <admin-state>enable</admin-state>
         <address>
           <ip-prefix>192.168.1.5/30</ip-prefix>
@@ -70,7 +70,7 @@
     <subinterface>
       <index>0</index>
       <admin-state>enable</admin-state>
-      <ipv4 xmlns="urn:nokia.com:srlinux:chassis:if-ip">
+      <ipv4>
         <admin-state>enable</admin-state>
         <address>
           <ip-prefix>10.0.0.3/32</ip-prefix>
@@ -95,7 +95,7 @@
         <instance>
           <name>main</name>
           <admin-state>enable</admin-state>
-          <version>ospf-v2</version>
+          <version xmlns:ot="urn:nokia.com:srlinux:general:ospf-types">ot:ospf-v2</version>
           <router-id>10.0.0.3</router-id>
           <area>
             <area-id>0.0.0.0</area-id>
